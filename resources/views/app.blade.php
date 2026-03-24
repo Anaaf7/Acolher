@@ -7,7 +7,7 @@
 
      @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body>
+<body class="font-fuzzyBubbles-bold">
     @yield('content')
 </body>
 </html>
