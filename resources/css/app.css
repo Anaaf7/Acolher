@@ -1,4 +1,5 @@
 @import 'tailwindcss';
+@import '@fortawesome/fontawesome-free/css/all.min.css';
 
 @source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
 @source '../../storage/framework/views/*.php';
@@ -38,9 +39,28 @@
   font-display: swap;
 }
 
+.bg-fundoPadrao {
+    background-image: url('../imagens/fundoPadrao.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    
+}
+
+/*Classes*/
 @theme {
-   --font-fuzzyBubbles-bold: "fuzzyBubbles-bold", ui-sans-serif, system-ui, sans-serif;
-   --font-fuzzyBubbles-bold: "fuzzyBubbles-bold", ui-sans-serif, system-ui, sans-serif;
-   --font-fuzzyBubbles: "fuzzyBubbles", ui-sans-serif, system-ui, sans-serif;
-   --font-jaldi: "jaldi", ui-sans-serif, system-ui, sans-serif;
+  /*Fontes*/
+  --font-fuzzyBubbles-bold: "fuzzyBubbles-bold", ui-sans-serif, system-ui, sans-serif;
+  --font-fuzzyBubbles-bold: "fuzzyBubbles-bold", ui-sans-serif, system-ui, sans-serif;
+  --font-fuzzyBubbles: "fuzzyBubbles", ui-sans-serif, system-ui, sans-serif;
+  --font-jaldi: "jaldi", ui-sans-serif, system-ui, sans-serif;
+
+  /*Cores*/
+  --color-bege: #FBEEDD;
+  --color-preto: #313133;
+  --color-cinza: #505050;
+  --color-azul-escuro: #669BBB;
+  --color-azul-claro: #76C1D8;
+  --color-vermelho-escuro: #F16267;
+  --color-vermelho-claro: #F57A7E;
 }
