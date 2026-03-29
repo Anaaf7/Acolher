@@ -8,8 +8,8 @@
 
 /*Fontes*/
 @font-face {
-  font-family: 'fuzzyBubbles-bold';
-  src: url('../fonts/FuzzyBubbles-Bold.ttf') format('truetype');
+  font-family: 'shantellSans';
+  src: url('../fonts/ShantellSans.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -24,14 +24,6 @@
 }
 
 @font-face {
-  font-family: 'fuzzyBubbles';
-  src: url('../fonts/FuzzyBubbles-Regular.ttf') format('truetype');
-  font-weight: normal;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
   font-family: 'jaldi';
   src: url('../fonts/Jaldi-Regular.ttf') format('truetype');
   font-weight: normal;
@@ -39,20 +31,19 @@
   font-display: swap;
 }
 
-.bg-fundoPadrao {
-    background-image: url('../imagens/fundoPadrao.png');
+.bg-fundo-padrao {
+    background-image: url('/public/imagens/fundo-padrao.png');
     background-size: cover;
     background-position: center;
+    background-attachment: fixed;
     background-repeat: no-repeat;
-    
 }
 
 /*Classes*/
 @theme {
   /*Fontes*/
-  --font-fuzzyBubbles-bold: "fuzzyBubbles-bold", ui-sans-serif, system-ui, sans-serif;
-  --font-fuzzyBubbles-bold: "fuzzyBubbles-bold", ui-sans-serif, system-ui, sans-serif;
-  --font-fuzzyBubbles: "fuzzyBubbles", ui-sans-serif, system-ui, sans-serif;
+  --font-shantellSans: "shantellSans", ui-sans-serif, system-ui, sans-serif;
+  --font-jaldi-bold: "jaldi-bold", ui-sans-serif, system-ui, sans-serif;
   --font-jaldi: "jaldi", ui-sans-serif, system-ui, sans-serif;
 
   /*Cores*/
