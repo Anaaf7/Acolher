@@ -64,8 +64,8 @@
                     <select id="tipo_usuario" name="tipo_usuario" required 
                         class="w-full bg-[#F9EBD7] border-none rounded-xl h-12 px-4 shadow-inner focus:ring-2 focus:ring-[#7FB3D5] text-gray-500 appearance-none cursor-pointer pr-10">
                         <option value="" disabled selected>Opções</option>
-                        <option value="cliente">Instituição</option>
-                        <option value="instituicao">Pessoa física</option>
+                        <option value="instituicao">Instituição</option>
+                        <option value="cliente">Pessoa física</option>
                     </select>
 
                     <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
