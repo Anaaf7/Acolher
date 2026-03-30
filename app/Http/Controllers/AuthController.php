@@ -50,8 +50,8 @@ class AuthController extends Controller
         ]);
 
         if ($response->failed()) {
-            // Se der erro, volta com as mensagens da API
-            return back()->withErrors($response->json()['mensagens'] ?? ['erro' => 'Falha no cadastro'])->withInput();
+            // Isso vai mostrar se a API está dizendo "foto_perfil is required"
+            dd($response->json()); 
         }
 
         if ($response->successful()) {

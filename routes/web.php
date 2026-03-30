@@ -3,7 +3,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 
 Route::get('/', function () {
-    return view('login');
+    return view('welcome');
 });
 
 // Rotas de Cadastro
