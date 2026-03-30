@@ -7,7 +7,7 @@
 
      @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body class="bg-fundo-padrao min-h-screen font-jaldi">
+<body class="bg-fundo-padrao font-jaldi">
 
 {{-- Header --}}
 <header class="flex justify-between items-center p-3">
@@ -21,7 +21,7 @@
 
 
    {{-- Conteúdo da página --}}
-    <main class="bg-fundo-padrao min-h-screen relative overflow-hidden flex flex-col items-center justify-center p-4 font-jaldi">
+    <main class="min-h-screen relative overflow-hidden flex flex-col items-center justify-center p-4">
         {{ $slot }}
     </main>
 </body>

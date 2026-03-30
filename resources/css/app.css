@@ -8,8 +8,8 @@
 
 /*Fontes*/
 @font-face {
-  font-family: 'shantellSans';
-  src: url('../fonts/ShantellSans.ttf') format('truetype');
+  font-family: 'shantellSans-Bold';
+  src: url('../fonts/ShantellSans-Bold.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
   font-display: swap;
@@ -42,7 +42,7 @@
 /*Classes*/
 @theme {
   /*Fontes*/
-  --font-shantellSans: "shantellSans", ui-sans-serif, system-ui, sans-serif;
+  --font-shantellSans-bold: "shantellSans-Bold", ui-sans-serif, system-ui, sans-serif;
   --font-jaldi-bold: "jaldi-bold", ui-sans-serif, system-ui, sans-serif;
   --font-jaldi: "jaldi", ui-sans-serif, system-ui, sans-serif;
 
