@@ -9,7 +9,7 @@
             Cadastre-se
         </h1>
 
-        <form action="#" method="POST" enctype="multipart/form-data" class="w-full max-w-4xl relative z-10">
+        <form action="{{ route('cadastro.post') }}" method="POST" enctype="multipart/form-data" class="w-full max-w-4xl relative z-10">
             @csrf
 
             <div x-show="step === 1" x-transition:enter.duration.500ms class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
