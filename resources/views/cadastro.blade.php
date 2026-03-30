@@ -9,7 +9,7 @@
             Cadastre-se
         </h1>
 
-        <form action="#" method="POST" enctype="multipart/form-data" class="w-full max-w-4xl relative z-10">
+        <form action="{{ route('cadastro.post') }}" method="POST" enctype="multipart/form-data" class="w-full max-w-4xl relative z-10">
             @csrf
 
             <div x-show="step === 1" x-transition:enter.duration.500ms class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
@@ -37,6 +37,42 @@
                     <x-label required>Senha</x-label>
                     <x-input type="password" id="senha" name="senha" placeholder="***" required />
                 </div>
+
+                <div class="flex flex-col">
+                <label class="text-azul-escuro text-lg font-jaldi-bold mb-1 ml-1 flex items-center gap-1">
+                    <span class="text-vermelho-escuro">*</span>Selecione o tipo de usuário
+                    
+                    <div x-data="{ show: false }" class="relative flex items-center">
+                        <i class="fa-solid fa-circle-info cursor-pointer" 
+                        style="color: rgb(80, 80, 80);"
+                        @mouseenter="show = true" 
+                        @mouseleave="show = false">
+                        </i>
+
+                        <div x-show="show" 
+                            x-transition 
+                            class="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 w-64 p-3 bg-gray-800 text-white text-xs rounded-lg shadow-xl z-50 text-justify"
+                            style="display: none;">
+                            <b class="font-jaldi-bold">Instituição</b>: perfil indicado para ONGs, brechós, igrejas ou projetos sociais que desejam receber doações; <br><br>
+                            <b class="font-jaldi-bold">Pessoa Física</b>: perfil indicado para quem deseja doar voluntariamente na plataforma.
+                            <div class="absolute top-full left-1/2 -translate-x-1/2 border-4 border-transparent border-t-gray-800"></div>
+                        </div>
+                    </div>
+                </label>
+
+                <div class="relative w-full">
+                    <select id="tipo_usuario" name="tipo_usuario" required 
+                        class="w-full bg-[#F9EBD7] border-none rounded-xl h-12 px-4 shadow-inner focus:ring-2 focus:ring-[#7FB3D5] text-gray-500 appearance-none cursor-pointer pr-10">
+                        <option value="" disabled selected>Opções</option>
+                        <option value="cliente">Instituição</option>
+                        <option value="instituicao">Pessoa física</option>
+                    </select>
+
+                    <div class="absolute inset-y-0 right-0 flex items-center pr-4 pointer-events-none">
+                        <i class="fa-solid fa-angle-down text-gray-500"></i>
+                    </div>
+                </div>
+            </div>
 
                 <div class="md:col-span-2 flex justify-end mt-4">
                     <x-button type="button" @click="step = 2">
