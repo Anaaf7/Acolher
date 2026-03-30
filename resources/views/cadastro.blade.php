@@ -15,27 +15,27 @@
             <div x-show="step === 1" x-transition:enter.duration.500ms class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
                 <div class="flex flex-col">
                     <x-label required>Nome completo</x-label>
-                    <x-input type="text" name="nome" placeholder="Fulano da Silva" required />
+                    <x-input type="text" id="nome" name="nome" placeholder="Fulano da Silva" required />
                 </div>
                 <div class="flex flex-col">
                     <x-label required>Telefone</x-label>
-                    <x-input type="text" name="telefone" placeholder="(47) 9 0000-0000" required />
+                    <x-input type="text" id="telefone" name="telefone" placeholder="(47) 9 0000-0000" required />
                 </div>
                 <div class="flex flex-col">
                     <x-label required>CPF/CNPJ</x-label>
-                    <x-input type="text" name="cpf_cnpj" placeholder="000.000.000-00" required />
+                    <x-input type="text" id="cpf_cnpj" name="cpf_cnpj" placeholder="000.000.000-00" required />
                 </div>
                 <div class="flex flex-col">
                     <x-label required>Endereço</x-label>
-                    <x-input type="text" name="endereco" placeholder="Digite seu CEP" required />
+                    <x-input type="text" id="endereco" name="endereco" placeholder="Digite seu CEP" required />
                 </div>
                 <div class="flex flex-col">
                     <x-label required>E-mail</x-label>
-                    <x-input type="email" name="email" placeholder="Fulano@gmail.com" required />
+                    <x-input type="email" id="email" name="email" placeholder="Fulano@gmail.com" required />
                 </div>
                 <div class="flex flex-col">
                     <x-label required>Senha</x-label>
-                    <x-input type="password" name="password" placeholder="***" required />
+                    <x-input type="password" id="senha" name="senha" placeholder="***" required />
                 </div>
 
                 <div class="md:col-span-2 flex justify-end mt-4">
@@ -76,7 +76,7 @@
                     </div>
                 </div>
 
-                            <div class="flex flex-col" x-data="{ fileName: '' }">
+                <div class="flex flex-col" x-data="{ fileName: '' }">
                 <x-label required>Imagem de perfil</x-label>
                 
                 <label 
