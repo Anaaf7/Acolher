@@ -82,7 +82,7 @@ class AuthController extends Controller
                 'user_tipo' => $dados['tipo']
             ]);
 
-            return redirect('/dashboard');
+            return redirect('/');
         }
 
         return back()->withErrors(['erro' => 'E-mail ou senha incorretos']);
