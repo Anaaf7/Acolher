@@ -1,6 +1,6 @@
 <x-layouts.crud :espelhar="false">
     <div class="w-full flex flex-col items-center lg:items-start lg:pl-32 px-6" 
-         x-data="{ step: 1 }"> {{-- Gerenciador de Etapas --}}
+         x-data="{ step: 1 }"> 
         
         <h1 class="font-shantellSans-bold text-center lg:text-left w-full
         bg-linear-to-r from-azul-escuro to-azul-claro bg-clip-text text-transparent 
@@ -32,10 +32,6 @@
                 <div class="flex flex-col">
                     <x-label required>E-mail</x-label>
                     <x-input type="email" id="email" name="email" placeholder="Fulano@gmail.com" required />
-                </div>
-                <div class="flex flex-col">
-                    <x-label required>Senha</x-label>
-                    <x-input type="password" id="senha" name="senha" placeholder="***" required />
                 </div>
 
                 <div class="flex flex-col">
@@ -120,7 +116,6 @@
                     @drop.prevent="fileName = $event.dataTransfer.files[0].name; $refs.fileInput.files = $event.dataTransfer.files"
                     class="w-full bg-bege border-2 border-dashed border-gray-300 rounded-xl h-14 flex items-center justify-between px-6 cursor-pointer"
                 >
-                    {{-- O texto muda apenas se fileName tiver valor --}}
                     <span class="text-gray-400 font-jaldi truncate pr-4" 
                         x-text="fileName ? fileName : 'Clique aqui ou arraste uma imagem'">
                     </span>
@@ -161,12 +156,88 @@
                        <- Voltar para etapa anterior
                     </button>
 
-                    <x-button type="submit">
-                        Finalizar cadastro
+                 <div class="md:col-span-2 flex justify-end mt-4">
+                    <x-button type="button" @click="step = 3">
+                        Próxima etapa
                     </x-button>
+                </div>
                 </div>
             </div>
 
+              
+            <div x-show="step === 3" 
+     x-transition:enter.duration.500ms 
+     x-data="{ 
+        show: false, 
+        showRepeat: false, 
+        senha: '',
+        repetir_senha: '',
+        get minLength() { return this.senha.length >= 8 },
+        get hasUpper() { return /[A-Z]/.test(this.senha) },
+        get hasNumber() { return /[0-9]/.test(this.senha) },
+        get hasSpecial() { return /[^a-zA-Z0-9]/.test(this.senha) }
+     }" 
+     class="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-6">
+     
+    <div class="flex flex-col">
+        <x-label required>Senha</x-label>
+        
+        <div class="relative w-full" @input="senha = $event.target.value">
+            <x-input x-bind:type="show ? 'text' : 'password'" id="senha" name="senha" placeholder="***" required class="w-full pr-10" />
+            
+            <button type="button" @click="show = !show" class="absolute inset-y-0 right-0 pr-3 flex items-center focus:outline-none">
+                <i x-show="show" class="fas fa-eye text-gray-500 hover:text-azul-escuro transition-colors"></i>
+                <i x-show="!show" class="fas fa-eye-slash text-gray-500 hover:text-azul-escuro transition-colors" style="display: none;"></i>
+            </button>
+        </div>
+
+        <ul class="mt-3 text-xs space-y-1">
+            <li :class="minLength ? 'text-green-600' : 'text-red-500'" class="flex items-center transition-colors">
+                <span x-text="minLength ? '✓' : 'x'" class="mr-2 text-sm font-bold"></span> Mínimo de 8 caracteres
+            </li>
+            <li :class="hasUpper ? 'text-green-600' : 'text-red-500'" class="flex items-center transition-colors">
+                <span x-text="hasUpper ? '✓' : 'x'" class="mr-2 text-sm font-bold"></span> Uma letra maiúscula
+            </li>
+            <li :class="hasNumber ? 'text-green-600' : 'text-red-500'" class="flex items-center transition-colors">
+                <span x-text="hasNumber ? '✓' : 'x'" class="mr-2 text-sm font-bold"></span> Um número
+            </li>
+            <li :class="hasSpecial ? 'text-green-600' : 'text-red-500'" class="flex items-center transition-colors">
+                <span x-text="hasSpecial ? '✓' : 'x'" class="mr-2 text-sm font-bold"></span> Um caractere especial
+            </li>
+        </ul>
+    </div>
+
+    <div class="flex flex-col">
+        <x-label required>Repetir senha</x-label>
+        
+        <div class="relative w-full" @input="repetir_senha = $event.target.value">
+            <x-input x-bind:type="showRepeat ? 'text' : 'password'" id="repetir_senha" name="repetir_senha" placeholder="***" required class="w-full pr-10" />
+            
+            <button type="button" @click="showRepeat = !showRepeat" class="absolute inset-y-0 right-0 pr-3 flex items-center focus:outline-none">
+                <i x-show="showRepeat" class="fas fa-eye text-gray-500 hover:text-azul-escuro transition-colors"></i>
+                <i x-show="!showRepeat" class="fas fa-eye-slash text-gray-500 hover:text-azul-escuro transition-colors" style="display: none;"></i>
+            </button>
+        </div>
+        
+        <div class="mt-3 text-xs">
+            <span x-show="repetir_senha !== '' && senha !== repetir_senha" class="text-red-500 font-bold transition-opacity">As senhas não estão iguais.</span>
+            <span x-show="repetir_senha !== '' && senha === repetir_senha" class="text-green-600 font-bold transition-opacity">As senhas estão iguais!</span>
+        </div>
+    </div>
+
+    <div class="col-span-1 md:col-span-2 flex flex-col md:flex-row items-center justify-between mt-10 gap-y-4">
+        <button type="button" @click="step = 2" class="text-gray-500 text-sm hover:text-azul-escuro">
+            <- Voltar para etapa anterior
+        </button>
+
+        <x-button 
+            type="submit" 
+            x-bind:disabled="!minLength || !hasUpper || !hasNumber || !hasSpecial || senha !== repetir_senha" 
+            x-bind:class="(!minLength || !hasUpper || !hasNumber || !hasSpecial || senha !== repetir_senha) ? 'opacity-50 cursor-not-allowed' : ''">
+            Finalizar cadastro
+        </x-button>
+    </div>
+</div>
         </form>
     </div>
 </x-layouts.crud>
